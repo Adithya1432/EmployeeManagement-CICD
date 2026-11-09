@@ -24,10 +24,10 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore backend/EmployeeManagement.sln
+        run: dotnet restore backend/EmployeeManagement.slnx
 
       - name: Build application
-        run: dotnet build backend/EmployeeManagement.sln --no-restore
+        run: dotnet build backend/EmployeeManagement.slnx --no-restore
 
       - name: Run tests
-        run: dotnet test backend/EmployeeManagement.sln --no-build
+        run: dotnet test backend/EmployeeManagement.slnx --no-build

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="EmployeeManagement.API.Tests/EmployeeManagement.API.Tests.csproj" />
+  <Project Path="EmployeeManagement.API/EmployeeManagement.API.csproj" />
+</Solution>
