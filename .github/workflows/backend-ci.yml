@@ -1,0 +1,40 @@
+name: Backend CI
+
+# Events that trigger the workflow
+on:
+  push:
+    branches:
+      - main
+      - feature/**
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build and Test Backend
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Download repository source code
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      # 2. Install .NET SDK 10
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      # 3. Restore NuGet dependencies
+      - name: Restore dependencies
+        run: dotnet restore backend/EmployeeManagement/EmployeeManagement.slnx
+
+      # 4. Compile the application
+      - name: Build application
+        run: dotnet build backend/EmployeeManagement/EmployeeManagement.slnx --no-restore --configuration Release
+
+      # 5. Execute unit tests
+      - name: Run tests
+        run: dotnet test backend/EmployeeManagement/EmployeeManagement.slnx --no-build --configuration Release
